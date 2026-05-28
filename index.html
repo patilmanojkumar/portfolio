@@ -1,26 +1,757 @@
+# `index.html`
+
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Manojkumar Patil</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Manojkumar Patil</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial;
-      background: #0f172a;
-      color: white;
-      text-align: center;
-      padding-top: 100px;
+      font-family: 'Inter', sans-serif;
+      background: #0b1120;
+      color: #f8fafc;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
-    h1 {
-      font-size: 48px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-    p {
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(15, 23, 42, 0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
       color: #cbd5e1;
-      font-size: 20px;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at top right, rgba(56,189,248,0.18), transparent 35%),
+        radial-gradient(circle at bottom left, rgba(139,92,246,0.18), transparent 35%),
+        #0b1120;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 800;
+    }
+
+    .hero-text h1 span {
+      color: #38bdf8;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      max-width: 700px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e2e8f0;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 35px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 20px;
+      color: #38bdf8;
+      font-size: 1.3rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 10px 16px;
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 999px;
+      margin: 6px;
+      color: #7dd3fc;
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: #94a3b8;
+      margin-bottom: 50px;
+      max-width: 700px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 30px;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,0.3);
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      font-size: 1.25rem;
+      color: #f8fafc;
+    }
+
+    .card p {
+      color: #cbd5e1;
+      font-size: 0.98rem;
+    }
+
+    .timeline {
+      border-left: 2px solid rgba(56,189,248,0.35);
+      margin-left: 10px;
+      padding-left: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .timeline-item h3 {
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+
+    .timeline-item span {
+      color: #94a3b8;
+      font-size: 0.92rem;
+    }
+
+    .timeline-item p {
+      margin-top: 12px;
+      color: #cbd5e1;
+    }
+
+    .publication-grid,
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .publication-card,
+    .project-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 30px;
+      transition: 0.3s ease;
+    }
+
+    .publication-card:hover,
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(99,102,241,0.35);
+    }
+
+    .publication-card h3,
+    .project-card h3 {
+      margin-bottom: 14px;
+      font-size: 1.15rem;
+      color: white;
+    }
+
+    .publication-card p,
+    .project-card p {
+      color: #cbd5e1;
+      margin-bottom: 18px;
+      font-size: 0.96rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(99,102,241,0.14);
+      color: #c4b5fd;
+      margin-right: 8px;
+      margin-bottom: 8px;
+      font-size: 0.82rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .skill-box {
+      background: rgba(255,255,255,0.04);
+      border-radius: 20px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .skill-box h3 {
+      margin-bottom: 15px;
+      color: #38bdf8;
+    }
+
+    .skill-box ul {
+      list-style: none;
+    }
+
+    .skill-box li {
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      text-align: center;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .contact-links a {
+      padding: 14px 22px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      transform: translateY(-3px);
+      border-color: rgba(56,189,248,0.35);
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    @media(max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media(max-width: 600px) {
+      .hero-text h1 {
+        font-size: 2.4rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Manojkumar Patil</h1>
-  <p>Research • Statistics • AI • Agriculture Analytics</p>
+
+  <nav>
+    <div class="container nav-content">
+      <div class="logo">Dr. Manojkumar Patil</div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-content">
+
+      <div class="hero-text">
+        <h1>
+          Dr. <span>Manojkumar</span><br>
+          Patil
+        </h1>
+
+        <p>
+          Agricultural Economist • Data Scientist • AI Researcher
+          specializing in econometrics, statistical modeling,
+          agricultural analytics, forecasting systems, and AI-driven
+          decision support.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="#contact" class="btn btn-secondary">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Research Interests</h3>
+
+        <span class="tag">Agricultural Economics</span>
+        <span class="tag">Econometrics</span>
+        <span class="tag">AI for Agriculture</span>
+        <span class="tag">Forecasting Models</span>
+        <span class="tag">Time Series Analysis</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Statistical Modeling</span>
+        <span class="tag">Decision Analytics</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">
+        I work at the intersection of agricultural economics,
+        statistical modeling, artificial intelligence, and data-driven
+        research systems. My work focuses on transforming agricultural
+        and economic datasets into actionable insights using econometric
+        techniques, machine learning, and computational analytics.
+      </p>
+
+      <div class="about-grid">
+
+        <div class="card">
+          <h3>Academic Background</h3>
+          <p>
+            Ph.D. in Agricultural Economics from the University of
+            Agricultural Sciences, Bengaluru. My research interests span
+            price forecasting, risk modeling, market analytics, and AI
+            applications in agricultural systems.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Technical Focus</h3>
+          <p>
+            Experienced in Python, R, SQL, Power BI, Tableau, and
+            machine learning workflows. I build analytical systems,
+            dashboards, and AI-powered research tools for applied
+            agricultural and economic problems.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Research Vision</h3>
+          <p>
+            My long-term goal is to bridge data science, AI, and
+            agricultural economics to create scalable analytical systems
+            that support evidence-based policymaking and decision
+            intelligence.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="container">
+      <h2 class="section-title">Research Areas</h2>
+      <p class="section-subtitle">
+        Areas of active academic and applied research.
+      </p>
+
+      <div class="skills-grid">
+
+        <div class="skill-box">
+          <h3>Econometrics</h3>
+          <ul>
+            <li>Time Series Analysis</li>
+            <li>Forecasting Models</li>
+            <li>Risk Estimation</li>
+            <li>Price Volatility Modeling</li>
+          </ul>
+        </div>
+
+        <div class="skill-box">
+          <h3>Artificial Intelligence</h3>
+          <ul>
+            <li>LLM Applications</li>
+            <li>RAG Systems</li>
+            <li>AI Research Assistants</li>
+            <li>Semantic Search</li>
+          </ul>
+        </div>
+
+        <div class="skill-box">
+          <h3>Agricultural Analytics</h3>
+          <ul>
+            <li>Market Intelligence</li>
+            <li>Agricultural Data Systems</li>
+            <li>Decision Analytics</li>
+            <li>Commodity Price Analysis</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">
+        Research and technical projects combining AI, analytics,
+        econometrics, and software systems.
+      </p>
+
+      <div class="project-grid">
+
+        <div class="project-card">
+          <h3>AgeconGPT</h3>
+
+          <p>
+            Developed a domain-specific AI assistant for agricultural
+            economics using Phi-3, ChromaDB, Ollama embeddings, and
+            Streamlit. The platform performs semantic retrieval over
+            departmental publications and research documents.
+          </p>
+
+          <span class="badge">Python</span>
+          <span class="badge">LLMs</span>
+          <span class="badge">ChromaDB</span>
+          <span class="badge">Streamlit</span>
+        </div>
+
+        <div class="project-card">
+          <h3>kmvahini</h3>
+
+          <p>
+            Created a Python package for accessing agricultural market
+            datasets from Karnataka's Krishi Marata Vahini portal,
+            simplifying data retrieval for research and analytical
+            workflows.
+          </p>
+
+          <span class="badge">Python</span>
+          <span class="badge">Data Engineering</span>
+          <span class="badge">Agricultural Data</span>
+        </div>
+
+        <div class="project-card">
+          <h3>Tomato Price Risk Analytics</h3>
+
+          <p>
+            Conducted advanced downside risk estimation for tomato
+            markets using Value-at-Risk methodologies, time series
+            modeling, and market arrival analytics across Karnataka.
+          </p>
+
+          <span class="badge">Econometrics</span>
+          <span class="badge">Risk Modeling</span>
+          <span class="badge">Forecasting</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="container">
+      <h2 class="section-title">Publications</h2>
+      <p class="section-subtitle">
+        Selected publications and ongoing research contributions.
+      </p>
+
+      <div class="publication-grid">
+
+        <div class="publication-card">
+          <h3>
+            Quantifying Inter-Annual Seasonal Drift in Tomato Prices
+          </h3>
+
+          <p>
+            Journal of Scientific Research and Reports (2025)
+          </p>
+
+          <span class="badge">Dynamic Time Warping</span>
+          <span class="badge">Price Analytics</span>
+        </div>
+
+        <div class="publication-card">
+          <h3>
+            Onion Price Forecasting Using SARIMA, Holt-Winters & LSTM
+          </h3>
+
+          <p>
+            Comparative forecasting framework for agricultural commodity
+            price prediction in Bengaluru markets.
+          </p>
+
+          <span class="badge">Forecasting</span>
+          <span class="badge">LSTM</span>
+          <span class="badge">SARIMA</span>
+        </div>
+
+        <div class="publication-card">
+          <h3>
+            Biofertilizers in India: Growth Patterns and Export
+            Competitiveness
+          </h3>
+
+          <p>
+            Research examining growth trends and competitiveness of
+            Indian biofertilizer exports.
+          </p>
+
+          <span class="badge">Trade Analysis</span>
+          <span class="badge">Agribusiness</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">
+        Academic teaching, training, and research contributions.
+      </p>
+
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <h3>Teaching Assistant — CHRIST University</h3>
+          <span>2023 – 2025 • Bengaluru, India</span>
+
+          <p>
+            Delivered lectures and mentored students in statistical
+            modeling, data analytics, Python, R, and Power BI workflows.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <h3>Resource Person & Trainer — UAS Mandya</h3>
+          <span>2025 • Karnataka, India</span>
+
+          <p>
+            Conducted advanced training programs on statistical analysis
+            in agricultural research using R and Python for postgraduate
+            scholars and scientists.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <h2 class="section-title">Skills & Tools</h2>
+      <p class="section-subtitle">
+        Technical tools and analytical platforms used in research and
+        development.
+      </p>
+
+      <div class="skills-grid">
+
+        <div class="skill-box">
+          <h3>Programming</h3>
+          <ul>
+            <li>Python</li>
+            <li>R</li>
+            <li>SQL</li>
+            <li>Git & GitHub</li>
+          </ul>
+        </div>
+
+        <div class="skill-box">
+          <h3>Analytics</h3>
+          <ul>
+            <li>Econometrics</li>
+            <li>Machine Learning</li>
+            <li>Forecasting Models</li>
+            <li>Statistical Modeling</li>
+          </ul>
+        </div>
+
+        <div class="skill-box">
+          <h3>Visualization</h3>
+          <ul>
+            <li>Power BI</li>
+            <li>Tableau</li>
+            <li>Data Dashboards</li>
+            <li>Research Reporting</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact">
+      <h2 class="section-title">Contact</h2>
+
+      <p class="section-subtitle" style="margin:auto;">
+        Open to collaborations, research discussions, AI projects,
+        consulting, workshops, and interdisciplinary academic work.
+      </p>
+
+      <div class="contact-links">
+
+        <a href="mailto:patil.manojkumar@hotmail.com">
+          Email
+        </a>
+
+        <a href="https://github.com/patilmanojkumar" target="_blank">
+          GitHub
+        </a>
+
+        <a href="https://linkedin.com/in/patilmanojkumar" target="_blank">
+          LinkedIn
+        </a>
+
+        <a href="https://medium.com/@patil.manojkumar" target="_blank">
+          Medium
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Dr. Manojkumar Patil • Built with Cloudflare Pages
+  </footer>
+
 </body>
 </html>
+
+* profile photo
+* publication links
